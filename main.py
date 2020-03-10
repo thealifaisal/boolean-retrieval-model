@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     dict_book = {}
 
-    for i in range(0, 2):
+    for i in range(0, 55):
         doc_id = i
         file = open('Trump Speechs/speech_' + str(doc_id) + ".txt", "r")
         file.readline()  # after reading the line, moves file ptr to next line to skip the title
