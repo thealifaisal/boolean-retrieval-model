@@ -1,6 +1,12 @@
 from pre_proc import Preprocessing
 
 
+def printDictBook(dict_book):
+    log_file = open("dict-log.txt", "w")
+    for i in dict_book:
+        log_file.write(i+" => "+str(dict_book[i])+"\n")
+        print(i+" => "+str(dict_book[i]))
+
 def removeWhitespaces(stop_list):
     for sw in stop_list:
         if sw.endswith(' '):
@@ -38,6 +44,7 @@ if __name__ == '__main__':
     # stop_list when imported from file has whitespaces, they should be removed
     stop_list = removeWhitespaces(stop_file.read().split('\n'))
     # print(stop_list)
+    stop_file.close()
 
     dict_book = {}
 
@@ -53,6 +60,6 @@ if __name__ == '__main__':
     stems = pipe.stemmer(tokens)
     # print(stems)
     dict_book = dictionary(stems, dict_book, doc_id)
-    for i in dict_book:
-        print(i+" => "+str(dict_book[i]))
+
+    printDictBook(dict_book)    # prints dict on terminal and write to file
 
