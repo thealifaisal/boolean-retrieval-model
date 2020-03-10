@@ -44,6 +44,6 @@ if __name__ == '__main__':
     tokens = pipe.tokenizer(file.read())
     # print(tokens)     # use of stop-list reduces overall char size from 53K to 42K from file speech_0
     stems = pipe.stemmer(tokens)
-    # print(stems)
+    print(stems)
     dict_book = dictionary(stems)
-    print(dict_book)
+    # print(dict_book)
