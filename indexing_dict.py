@@ -12,7 +12,7 @@ class Indexing:
                     position_list.append(pos)
                     posting_list[doc_id] = position_list
                 else:
-                    position_list.append(pos)
+                    position_list = [pos]
                     posting_list[doc_id] = position_list
                 book[stem] = posting_list
             else:
