@@ -1,6 +1,13 @@
-from pre_proc import Preprocessing
+#################################################################
+# -------------------  AUTHOR: ALI FAISAL -----------------------#
+#################################################################
 from indexing_dict import Indexing
+from pre_proc import Preprocessing
 from utility_funcs import removeWhitespaces
+from search_lib import identifyQuery
+from search_lib import positionalSearch
+from search_lib import proximitySearch
+from search_lib import booleanSearch
 
 if __name__ == '__main__':
     stop_file = open('Stopword-List.txt', "r")
@@ -27,3 +34,32 @@ if __name__ == '__main__':
         dict_book = dict_obj.dictionary(stems, dict_book, doc_id)
 
     dict_obj.printDictBook(dict_book)  # prints dict on terminal and write to file
+
+    # ----------------- INDEXING DONE ------------------
+
+    while True:
+        query = input("Enter Query (F for stop): ")
+
+        if query == "F":
+            break
+
+        v = identifyQuery(query)
+
+        if v == "PO":
+            doc_list1 = positionalSearch(query, stop_list, dict_book)
+            print("Relevant Documents: \n")
+            for i in doc_list1:
+                print('Trump Speechs/speech_' + str(i) + '.txt')
+        elif v == "PR":  # after years /1
+            q_l = query.split("/")  # ["after years", "1"]
+            q = q_l[0]  # "after years "
+            k = q_l[1]  # 1
+            doc_list2 = proximitySearch(q, stop_list, dict_book, int(k))
+            print("Relevant Documents: \n")
+            for i in doc_list2:
+                print('Trump Speechs/speech_' + str(i) + '.txt')
+        elif v == "B":
+            doc_list3 = booleanSearch(query, stop_list, dict_book)
+            print("Relevant Documents: \n")
+            for i in doc_list3:
+                print('Trump Speechs/speech_' + str(i) + '.txt')

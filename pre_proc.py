@@ -22,7 +22,7 @@ class Preprocessing:
                 string += file_buffer[i]
                 c += 1
             elif ord(file_buffer[i]) in range(48, 58):  # ASCII[48-57] => [0-9]
-                while file_buffer[i] not in [" ", ":", "!", "?", "-"]:  # read the numbers until
+                while file_buffer[i] not in [" ", ":", "!", "?", "-"] and i < file_len:  # read the numbers until
                     # if decimal or comma occurs but after that there is no number
                     if file_buffer[i] in [".", ","] and ord(file_buffer[i + 1]) not in range(48, 58):  # '234,Now'
                         break
@@ -59,7 +59,7 @@ class Preprocessing:
                     string = ""
                     c = 0
                     i += 1  # move the ptr to next char possibly [s, re, ..]
-                    while file_buffer[i] not in [" ", ":", ",", "!", "?", "."]:
+                    while file_buffer[i] not in [" ", ":", ",", "!", "?", "."] and i < file_len:
                         i += 1  # ignore everything after apostrophe until the list above
                 elif file_buffer[i] == "[":  # when this occurs, ignore in the inside of brackets, e.g: [applause]
                     if c != 0:  # this also marks the end of word, so if read char count > 1
@@ -68,7 +68,7 @@ class Preprocessing:
                         string = ""
                         c = 0
                     i += 1  # move the ptr inside the brackets [...
-                    while file_buffer[i] not in ["]"]:  # read until ]
+                    while file_buffer[i] not in ["]"] and i < file_len:  # read until ]
                         i += 1  # ignore everything inside
             i += 1
         # tokens_L.remove('') - token list returned has empty strings in multiple indexes
