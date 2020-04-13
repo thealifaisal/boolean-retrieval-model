@@ -1,14 +1,14 @@
 # I created a class Indexing to encapsulate the methods related to dictionary
 class Indexing:
     # dictionary struct: {"stem":{"docID", [positions, ...]}}
-    def dictionary(self, stem_list, book, doc_id):
+    def dictionary(self, stem_list, book: dict, doc_id):
         stem_list_len = len(stem_list)
         for pos in range(0, stem_list_len):
             stem = stem_list[pos]
-            if book.__contains__(stem):
-                posting_list = book[stem]
-                if posting_list.__contains__(doc_id):
-                    position_list = posting_list[doc_id]
+            if book.keys().__contains__(stem):
+                posting_list: dict = book[stem]
+                if posting_list.keys().__contains__(doc_id):
+                    position_list: list = posting_list[doc_id]
                     position_list.append(pos)
                     posting_list[doc_id] = position_list
                 else:
