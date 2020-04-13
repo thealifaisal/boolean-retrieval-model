@@ -1,6 +1,0 @@
-Two Folders will be created:
-
-1 - Will create the inverted index
-	- dictionary and posting list
-
-2 - Will import the dictionary and posting list from file and search
