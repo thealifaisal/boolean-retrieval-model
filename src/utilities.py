@@ -6,3 +6,17 @@ def removeWhitespaces(stop_list):
             sw = sw.replace(' ', '')  # 'is ' => 'is'
             stop_list.append(sw)
     return stop_list
+
+
+def printResultSet(doc_list):
+    result_string = "{ "
+    result_count = 0
+
+    for doc in doc_list:
+        result_string += str(doc)+", "
+        result_count += 1
+
+    result_string += "}"
+
+    print("Result-Set Length: " + str(result_count))
+    print("Result-Set: " + result_string + "\n")

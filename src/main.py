@@ -2,7 +2,7 @@
 # -------------------  AUTHOR: ALI FAISAL -----------------------#
 #################################################################
 from src.indexing import Indexing
-from src.utilities import removeWhitespaces
+from src.utilities import *
 from src.search import *
 
 if __name__ == '__main__':
@@ -33,38 +33,37 @@ if __name__ == '__main__':
 
     # ----------------- INDEXING DONE ------------------
 
+    doc_list = []
+
     while True:
+
         query = input("Enter Query (F for stop): ")
 
         if query == "F":
             break
 
-        v = identifyQuery(query)
+        query_type = identifyQuery(query)
 
-        if v == "PO":
-            print("Query Type: " + v)
-            doc_list1 = positionalSearch(query+" ", stop_list, dict_book)
-            print("Relevant Documents: \n")
-            for i in doc_list1:
-                print('Trump Speechs/speech_' + str(i) + '.txt')
-        elif v == "PR":  # after years /1
-            print("Query Type: " + v)
+        if query_type == "PO":
+            print("\nQuery Type: " + query_type)
+            doc_list = positionalSearch(query+" ", stop_list, dict_book)
+            printResultSet(doc_list)
+
+        elif query_type == "PR":  # after years /1
+            print("\nQuery Type: " + query_type)
             q_l = query.split("/")  # ["after years", "1"]
             q = q_l[0]  # "after years "
             k = q_l[1]  # 1
-            doc_list2 = proximitySearch(q+" ", stop_list, dict_book, int(k))
-            print("Relevant Documents: \n")
-            for i in doc_list2:
-                print('Trump Speechs/speech_' + str(i) + '.txt')
-        elif v == "B":
-            print("Query Type: " + v)
-            doc_list3 = booleanSearch(query+" ", stop_list, dict_book)
-            print("Relevant Documents: \n")
-            for i in doc_list3:
-                print('Trump Speechs/speech_' + str(i) + '.txt')
-        elif v == "S":
-            print("Query Type: " + v)
-            doc_list3 = positionalSingleSearch(query + " ", stop_list, dict_book)
-            print("Relevant Documents: \n")
-            for i in doc_list3:
-                print('Trump Speechs/speech_' + str(i) + '.txt')
+            doc_list = proximitySearch(q+" ", stop_list, dict_book, int(k))
+            printResultSet(doc_list)
+
+        elif query_type == "B":
+            print("\nQuery Type: " + query_type)
+            doc_list = booleanSearch(query+" ", stop_list, dict_book)
+            printResultSet(doc_list)
+
+        elif query_type == "S":
+            print("\nQuery Type: " + query_type)
+            doc_list = positionalSingleSearch(query + " ", stop_list, dict_book)
+            printResultSet(doc_list)
+
