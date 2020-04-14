@@ -18,5 +18,5 @@ The Boolean model here dealt with is the most common exact match model.
   * NOT X: represents the doc that do not contain X
 
 ## Boolean Queries Example
-User information need: Interested to know about Everest and Nepal
-User Boolean query: Everest AND Nepal
+- User information need: Interested to know about Everest and Nepal.
+- User Boolean query: Everest AND Nepal
