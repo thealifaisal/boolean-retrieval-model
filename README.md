@@ -6,7 +6,7 @@ In exact match a query specifies precise criteria. Each document either matches 
 
 In best match a query describes good or best matching documents. In this case the result is a ranked list of document. 
 
-The Boolean model here I’m going to deal with is the most common exact match model.
+The Boolean model here dealt with is the most common exact match model.
 
 ## Basic Assumption of Boolean Model:
 
@@ -17,6 +17,6 @@ The Boolean model here I’m going to deal with is the most common exact match m
   * X OR Y: represents doc that contains either X or Y
   * NOT X: represents the doc that do not contain X
 
-### Boolean Queries Example
+## Boolean Queries Example
 User information need: Interested to know about Everest and Nepal
 User Boolean query: Everest AND Nepal
